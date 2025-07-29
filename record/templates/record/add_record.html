@@ -1,0 +1,67 @@
+
+{% extends 'record/base.html' %} 
+{% block content %}
+<h2 class= "text-info text-center">
+    <i class="bi bi-file-earmark-plus"></i> Add Medical Record
+  </h2>
+<div class="container d-flex justify-content-center mt-3">
+    <div class="card shadow border border-secondary" style="max-width: 600px; width: 100%;">
+      <div class="card-body">
+        
+  
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+  
+          <!-- Existing Doctor Dropdown -->
+          <div class="mb-3">
+            <label for="doctor-select" class="form-label">Select Existing Doctor</label>
+            <select name="doctor" id="doctor-select" class="form-select">
+              <option value="">Select existing doctor</option>
+              {% for doctor in doctors %}
+                <option value="{{ doctor.id }}">{{ doctor.name }} - {{ doctor.specialty }}</option>
+              {% endfor %}
+            </select>
+          </div>
+  
+          <!-- New Doctor Fields -->
+          <div class="mb-3">
+            <label for="new_doctor_name" class="form-label">New Doctor Name</label>
+            <input type="text" name="new_doctor_name" id="new_doctor_name" class="form-control" placeholder="Enter doctor name">
+          </div>
+  
+          <div class="mb-3">
+            <label for="new_doctor_specialty" class="form-label">New Doctor Specialty</label>
+            <input type="text" name="new_doctor_specialty" id="new_doctor_specialty" class="form-control" placeholder="Enter specialty">
+          </div>
+  
+          <!-- Date -->
+          <div class="mb-3">
+            <label class="form-label">Date of Visit</label>
+            <input type="date" name="date_of_visit" class="form-control" required>
+          </div>
+  
+          <!-- Purpose -->
+          <div class="mb-3">
+            <label class="form-label">Purpose</label>
+            <input type="text" name="purpose" class="form-control" placeholder="Enter purpose" required>
+          </div>
+  
+          <!-- Prescription Upload -->
+          <div class="mb-4">
+            <label class="form-label">Upload Prescription</label>
+            <input type="file" name="prescription" class="form-control" accept="application/pdf">
+          </div>
+  
+          <!-- Submit Button -->
+          <div class="text-center">
+            <button type="submit" class="btn btn-outline-success px-4" onclick="this.disabled=true; this.form.submit();">
+              <i class="bi bi-save2-fill me-1"></i> Save Record
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  
+{% endblock %}

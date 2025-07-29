@@ -1,0 +1,43 @@
+{% extends 'record/base.html' %}
+{% block title %}About | Medical Records{% endblock %}
+
+{% block content %}
+
+<div class="container py-4">
+    <div class="card border-info shadow-lg p-4">
+        <h2 class="text-info mb-3"><i class="bi bi-info-circle-fill me-2"></i>About Us</h2>
+        <p class="lead text-light">
+            The <strong>Medical Records Management System</strong> is a web application built using <strong>Django</strong> for securely managing and organizing a patient's medical history.
+        </p>
+        <hr class="border-secondary">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-dark text-light border-secondary">
+                🗂️ Users can register and log in to manage their own medical records.
+            </li>
+            <li class="list-group-item bg-dark text-light border-secondary">
+                👩‍⚕️ Add doctors and associate them with visit records.
+            </li>
+            <li class="list-group-item bg-dark text-light border-secondary">
+                📄 Upload prescription PDFs which are auto-summarized using an AI model.
+            </li>
+            <li class="list-group-item bg-dark text-light border-secondary">
+                💊 Enter symptoms and get disease predictions and medicine suggestions.
+            </li>
+            <li class="list-group-item bg-dark text-light border-secondary">
+                📚 View grouped records under each doctor, and use filters/search.
+            </li>
+        </ul>
+        <hr class="border-secondary">
+        <p class="text-light">
+            This project integrates <strong>PyMuPDF</strong> for PDF extraction, <strong>Hugging Face Transformers</strong> for summarization, and custom CSV logic for disease prediction. It helped us apply concepts in <strong>full-stack development, machine learning</strong>, and <strong>real-world problem solving</strong>.
+        </p>
+        <p class="text-muted small">Developed by Bhuvana, 3rd Year CSE, RGUKT RK Valley</p>
+    </div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+    <a href="{% url 'record_list' %}" class="btn btn-outline-info">
+      <i class="bi bi-arrow-left-circle me-2"></i> Back to Home
+    </a>
+  </div>
+  
+{% endblock %}

@@ -1,0 +1,11 @@
+symptoms,disease,medications
+fever,Common Cold,"Paracetamol, Vitamin C"
+"fever, cough",COVID-19,"Rest, Isolation, Paracetamol"
+headache,Migraine,Ibuprofen
+cough,Cough and Cold,Cough Syrup
+chest pain,Heart Disease,"Aspirin, Nitroglycerin"
+sore throat,Tonsillitis,"Antibiotics, Salt Water Gargle"
+"nausea, vomiting",Food Poisoning,"ORS, Antiemetics"
+"fatigue, weight loss",Diabetes,"Insulin, Metformin"
+joint pain,Arthritis,"Pain Relievers, Anti-inflammatory drugs"
+"itching, rash",Allergy,Antihistamines

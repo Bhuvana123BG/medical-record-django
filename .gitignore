@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Virtualenv
+.venv/
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Secrets
+.env
+
+# Supabase uploads (optional, if you have a local backup folder)
+uploads/

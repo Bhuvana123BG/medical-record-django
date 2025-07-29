@@ -1,0 +1,35 @@
+{% extends 'record/base.html' %}
+{% block title %}Disease Predictor{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="card bg-dark text-light shadow-lg rounded-4 p-4">
+    <h2 class="text-info fw-bold text-center mb-4"><i class="bi bi-activity"></i> Disease Predictor</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="symptoms" class="form-label">Enter Symptoms (comma separated)</label>
+          <input type="text" class="form-control" name="symptoms" id="symptoms" placeholder="e.g. fever, cough" required>
+        </div>
+        <button type="submit" class="btn btn-info">Predict Disease</button>
+      </form>
+      
+      {% if result %}
+        <div class="mt-4 card bg-dark border border-info shadow rounded">
+          <div class="card-body">
+            <h5 class="card-title text-info">Predicted Disease:</h5>
+            <p class="card-text">{{ result.disease }}</p>
+            <h6 class="card-subtitle text-info">Suggested Medications:</h6>
+            <p class="card-text">{{ result.medications }}</p>
+          </div>
+        </div>
+      {% endif %}
+      
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-2">
+    <a href="{% url 'record_list' %}" class="btn btn-outline-info">
+      <i class="bi bi-arrow-left-circle me-2"></i> Back to Home
+    </a>
+  </div>
+{% endblock %}

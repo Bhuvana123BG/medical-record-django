@@ -1,0 +1,39 @@
+{% extends 'record/base.html' %}
+{% block title %}Grouped Records{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-light text-center">Medical Records Grouped by Doctor</h2>
+
+{% if doctors %}
+  {% for doctor in doctors %}
+    {% if doctor.medicalrecord_set.all %}
+      <div class="card mb-4 bg-dark text-white">
+        <div class="card-header">
+          <h5 class="mb-0">{{ doctor.name }} - <small class="text-muted">{{ doctor.specialty }}</small></h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          {% for record in doctor.user_records  %}
+            <li class="list-group-item bg-secondary text-white d-flex justify-content-between align-items-center">
+              <div>
+                <strong>Date:</strong> {{ record.date_of_visit }} <br>
+                <strong>Purpose:</strong> {{ record.purpose }}
+              </div>
+              <div>
+                <a href="{% url 'edit_record' record.id %}" class="btn btn-sm btn-outline-light me-2">Edit</a>
+                <a href="{% url 'delete_record' record.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% else %}
+  <p class="text-light">No medical records found.</p>
+{% endif %}
+<div class="d-flex justify-content-center mt-3">
+    <a href="{% url 'record_list' %}" class="btn btn-outline-info">
+      <i class="bi bi-arrow-left-circle me-2"></i> Back to Home
+    </a>
+  </div>
+{% endblock %}

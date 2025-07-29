@@ -1,0 +1,41 @@
+{% extends 'record/base.html' %}
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center my-4">
+    <div class="card bg-dark text-light rounded-4 shadow-lg border border-secondary" style="max-width: 600px; width: 100%;">
+      <div class="card-header text-center border-0">
+        <h2 class="text-info fw-bold"><i class="bi bi-person-circle me-2"></i>User Profile</h2>
+      </div>
+      <div class="card-body px-4 py-3">
+        <form>
+          <div class="mb-4">
+            <label class="form-label text-info"><i class="bi bi-person-fill me-2"></i>Username</label>
+            <input type="text" class="form-control" value="{{ request.user.username }}" disabled>
+          </div>
+  
+          <div class="mb-4">
+            <label class="form-label text-info"><i class="bi bi-envelope-fill me-2"></i>Email</label>
+            <input type="text" class="form-control" value="{{ request.user.email|default:'Not Provided' }}" disabled>
+          </div>
+  
+          <div class="mb-4">
+            <label class="form-label text-info"><i class="bi bi-calendar3 me-2"></i>Date Joined</label>   
+            <input type="text" class="form-control" value="{{ request.user.date_joined|date:'F j, Y' }}" disabled>
+          </div>
+  
+          <div class="mb-4">
+            <label class="form-label text-info"><i class="bi bi-telephone-fill me-2"></i>Mobile Number</label>
+            <input type="text" class="form-control" value="{{ request.user.mobile_number|default:'Not Provided'}}" disabled>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+<div class="d-flex justify-content-center my-2">
+    <a href="{% url 'record_list' %}" class="btn btn-outline-info">
+      <i class="bi bi-arrow-left-circle me-2"></i> Back to Home
+    </a>
+  </div>
+{% endblock %}
